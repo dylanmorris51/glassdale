@@ -1,4 +1,4 @@
-import { useOfficers, getOfficers } from './officers/officerprovider.js'
+import { useOfficers, getOfficers } from './officers/OfficerProvider.js'
 
 const useOfficersData = useOfficers()
 console.log(useOfficersData)

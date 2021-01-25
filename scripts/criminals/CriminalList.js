@@ -16,8 +16,8 @@ export const criminalList = () => {
             }
     
             criminalContainer.innerHTML += `
-            <h3> Criminals <h3>
-            <article class="criminalList>
+            <h3> Criminals </h3>
+            <article class="criminalList">
                 ${criminalHTMLRepresentation}
             </article>`
         })

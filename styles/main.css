@@ -1,0 +1,11 @@
+.criminalList {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.criminal__card {
+    border: 1px solid black;
+    margin: 10px;
+    width: 25%;
+}

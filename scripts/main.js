@@ -1,7 +1,7 @@
 import { useOfficers, getOfficers } from './officers/OfficerProvider.js'
 // import { useCriminals, getCriminals } from './criminals/CriminalProvider.js'
 import { criminalList } from './criminals/CriminalList.js'
-
+import { ConvictionSelect } from './convictions/ConvictionSelect.js'
 
 const useOfficersData = useOfficers()
 console.log(useOfficersData)
@@ -17,3 +17,5 @@ console.log(getOfficersData)
 
 const displayCriminals = criminalList()
 console.log("display criminals", displayCriminals)
+
+ConvictionSelect()

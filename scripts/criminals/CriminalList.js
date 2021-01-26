@@ -27,8 +27,10 @@ import { Criminal } from './Criminal.js'
 
 const eventHub = document.querySelector(".container")
 
+
 eventHub.addEventListener("crimeChosen"), event => {
     if (event.detail.crimeThatWasChosen !== "0"){
+        const criminalsArray = useCriminals()
         const matchingCriminals = appStateCriminals.filter(currentCriminal => {
             if (currentCriminal.conviction === )
             // TODO ---- FIGURE OUT HOW TO MATCH THE FILTERED ARRAY OF CRIMINALS TO CORRESPONDING CONVICTION IN THE CRIMECHOSEN EVENT

@@ -1,6 +1,7 @@
 import { getCriminals, useCriminals } from './CriminalProvider.js'
 import { Criminal } from './Criminal.js'
 import { useConvictions } from '../convictions/ConvicationProvider.js'
+import { useOfficers } from '../officers/OfficerProvider.js'
 
 
 
@@ -74,3 +75,15 @@ eventHub.addEventListener("crimeChosen", event => {
     }
 ) 
 
+eventHub.addEventListener("officerSelected", event => {
+    if (event.detail.officer !== "0") {
+    
+    const officerArray = useOfficers()
+    const criminals = useCriminals()
+
+    const officerName = officerArray.find(offObj => {return offObj.id === parseInt(event.detail.officer)})
+    const filteredCriminalsByOfficer = criminals.filter(crimObj => crimObj.arrestingOfficer === officerName.name)
+
+    renderToDom(filteredCriminalsByOfficer)
+    }
+})

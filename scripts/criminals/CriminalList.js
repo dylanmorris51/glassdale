@@ -35,7 +35,7 @@ export const CriminalList = () => {
     getCriminals()
         .then(() => {
             const criminalsArray = useCriminals()
-            render(criminalsArray)
+            renderToDom(criminalsArray)
         })
     }
     

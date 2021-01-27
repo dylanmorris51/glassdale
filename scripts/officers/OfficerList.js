@@ -1,22 +1,25 @@
-import { getOfficers, useOfficers } from "./OfficerProvider";
+import { getOfficers, useOfficers } from "./OfficerProvider.js";
 import { Officer } from './Officer.js'
 
 
+const officerContainer = document.querySelector(".officersContainer")
 
-getOfficers()
+export const OfficerList = () => {
+    
+    getOfficers()
     .then(() => {
         const officerArray = useOfficers()
-        const officerContainer = document.querySelector(".officersContainer")
         let officerHTMLRepresentation = ""
 
         for (const officer of officerArray) {
             officerHTMLRepresentation += Officer(officer)
         }
         
-        officerContainer.innerHTML += `
+        officerContainer.innerHTML = `
         <h3> Glassdale Officers </h3>
-        <article class="officersList">
+        <article class="officerList">
             ${officerHTMLRepresentation}
         </article>
         `
     })
+}

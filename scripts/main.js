@@ -2,6 +2,8 @@ import { useOfficers, getOfficers } from './officers/OfficerProvider.js'
 // import { useCriminals, getCriminals } from './criminals/CriminalProvider.js'
 import { CriminalList } from './criminals/CriminalList.js'
 import { ConvictionSelect } from './convictions/ConvictionSelect.js'
+import { OfficerList } from './officers/OfficerList.js'
+import { OfficerSelect } from './officers/OfficerSelect.js'
 
 const useOfficersData = useOfficers()
 console.log(useOfficersData)
@@ -19,3 +21,6 @@ const displayCriminals = CriminalList()
 console.log("display criminals", displayCriminals)
 
 ConvictionSelect()
+
+const displayOfficers = OfficerList()
+OfficerSelect()

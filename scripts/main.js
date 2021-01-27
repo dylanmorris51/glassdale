@@ -5,6 +5,13 @@ import { ConvictionSelect } from './convictions/ConvictionSelect.js'
 import { OfficerList } from './officers/OfficerList.js'
 import { OfficerSelect } from './officers/OfficerSelect.js'
 import { NoteForm } from './notes/NoteForm.js'
+import { ShowNoteButton } from './notes/ShowNotesButton.js'
+
+
+
+
+
+
 const useOfficersData = useOfficers()
 console.log(useOfficersData)
 
@@ -25,3 +32,5 @@ ConvictionSelect()
 
 const displayOfficers = OfficerList()
 OfficerSelect()
+
+const displayNoteButton = ShowNoteButton()

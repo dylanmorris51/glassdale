@@ -1,5 +1,6 @@
 import { getCriminals, useCriminals } from './CriminalProvider.js'
 import { Criminal } from './Criminal.js'
+import { useConvictions } from '../convictions/ConvicationProvider.js'
 
 
 
@@ -26,33 +27,50 @@ import { Criminal } from './Criminal.js'
 // New code for event hub
 
 const eventHub = document.querySelector(".container")
+const criminalsContainer = document.querySelector(".criminalsContainer")
 
 
-eventHub.addEventListener("crimeChosen"), event => {
-    if (event.detail.crimeThatWasChosen !== "0"){
-        const criminalsArray = useCriminals()
-        const matchingCriminals = appStateCriminals.filter(currentCriminal => {
-            if (currentCriminal.conviction === )
-            // TODO ---- FIGURE OUT HOW TO MATCH THE FILTERED ARRAY OF CRIMINALS TO CORRESPONDING CONVICTION IN THE CRIMECHOSEN EVENT
-        })
-        render(matchingCriminals)
-    }
-} 
-
-const render = criminalCollection => {
-    const criminalContainer = document.querySelector(".criminalsContainer")
-    criminalContainer.innerHTML = `
-        <h3> ${criminalCollection.conviction} Criminals </h3>
-            <article class="criminalList">
-                ${criminalCollection.name}
-            </article>
-            `
-}
 
 export const CriminalList = () => {
     getCriminals()
         .then(() => {
-            const appStateCriminals = useCriminals()
-            render(appStateCriminals)
+            const criminalsArray = useCriminals()
+            render(criminalsArray)
         })
-}
+    }
+    
+    const renderToDom = criminalCollection => {
+        // My code before Jissie's walkthrough:
+        
+        // criminalContainer.innerHTML = `
+        //     <h3> ${criminalCollection.conviction} Criminals </h3>
+        //         <article class="criminalList">
+        //             ${criminalCollection.name}
+        //         </article>
+        //         `
+        // Jisie's walkthrough:
+        let criminalHTMLRepresentation = ""
+        for (const criminal of criminalCollection)
+        criminalHTMLRepresentation += Criminal(criminal)
+    
+        criminalsContainer.innerHTML = `
+        <h3> Criminals </h3>
+            <section class="criminalList">
+                ${criminalHTMLRepresentation}
+            </section>`
+    }
+
+
+eventHub.addEventListener("crimeChosen", event => {
+    if (event.detail.crimeThatWasChosen !== "0") {
+        
+    const convictionsArray = useConvictions()
+            const chosenConvictionObject = convictionsArray.find(convictionObj => {return convictionObj.id === parseInt(event.detail.crimeThatWasChosen)})
+    const criminalsArray = useCriminals()
+            const filteredCriminalsArray = criminalsArray.filter(criminalObj => {return criminalObj.conviction === chosenConvictionObject.name})
+
+            renderToDom(filteredCriminalsArray)
+        }
+    }
+) 
+

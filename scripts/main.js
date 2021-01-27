@@ -4,7 +4,7 @@ import { CriminalList } from './criminals/CriminalList.js'
 import { ConvictionSelect } from './convictions/ConvictionSelect.js'
 import { OfficerList } from './officers/OfficerList.js'
 import { OfficerSelect } from './officers/OfficerSelect.js'
-
+import { NoteForm } from './notes/NoteForm.js'
 const useOfficersData = useOfficers()
 console.log(useOfficersData)
 
@@ -17,6 +17,7 @@ console.log(getOfficersData)
 // const getCriminalsData = getCriminals()
 // console.log(getCriminalsData)
 
+const displayNotes = NoteForm()
 const displayCriminals = CriminalList()
 console.log("display criminals", displayCriminals)
 

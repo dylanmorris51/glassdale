@@ -1,3 +1,16 @@
 {
-    "notes": []
+    "notes": [
+        {
+            "id": 1,
+            "note-text": "ipsum fun time",
+            "note-date": "don't make me think of numbers",
+            "note-suspect": "Bryan, it's always Bryan."
+        },
+        {
+            "note-text": "ipsum boredom time",
+            "note-date": "1/27",
+            "note-suspect": "Bryan, it's still always Bryan.",
+            "id": 2
+        }
+    ]
 }

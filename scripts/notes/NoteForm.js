@@ -1,7 +1,7 @@
 const contentTarget = document.querySelector(".noteFormContainer")
 const saveButtonTarget = document.querySelector(".noteSaveButton")
 
-const render = (noteForm) => {
+const render = () => {
     contentTarget.innerHTML =  `
         <form id="noteForm">
             <fieldset id="noteFormField">
@@ -18,10 +18,12 @@ const render = (noteForm) => {
                 <input type="text" name="note-suspect" id="note-suspect">
             </fieldset>
             </fieldset>
-            <button id="saveNote">Save Note</button>
-        </form>
-        `
-        
+            
+            
+            </form>
+            `
+            saveButtonTarget.innerHTML= `<button id="saveNote">Save Note</button>`
+            
         
 }
 

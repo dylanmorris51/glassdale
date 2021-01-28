@@ -10,6 +10,13 @@ eventHub.addEventListener("showNotesClicked", customEvent => {
 
 })
 
+eventHub.addEventListener("noteStateChanged", customEvent => {
+    // if showNotesClicked hasn't been clicked (equals false) then do nothing, but if its true then redisplay the list
+    if (contentTarget.innerHTML !== "") {
+        NoteList()
+    }
+})
+
 const render = (noteArray) => {
     const allNotesConvertedToStrings = noteArray.map(
         arrayObj => NoteHTMLConverter(arrayObj)

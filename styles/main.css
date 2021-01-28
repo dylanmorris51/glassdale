@@ -21,3 +21,30 @@
     width: 25%;
 }
 
+/* aside {
+    display: flex;
+    flex-flow: column flex;
+    justify-content: center;
+} */
+
+.top {
+    display: flex;
+}
+
+.bothButtons {
+    display: flex;
+    flex-direction: row;
+}
+
+.noteList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.note {
+    background-color: papayawhip;
+    border-radius: 5%;
+    margin: 5px;
+    width: 33%;
+}

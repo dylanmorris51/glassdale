@@ -76,14 +76,15 @@ eventHub.addEventListener("crimeChosen", event => {
 ) 
 
 eventHub.addEventListener("officerSelected", event => {
-    if (event.detail.officer !== "0") {
+    const officerName = event.detail.officer
     
-    const officerArray = useOfficers()
     const criminals = useCriminals()
 
-    const officerName = officerArray.find(offObj => {return offObj.id === parseInt(event.detail.officer)})
-    const filteredCriminalsByOfficer = criminals.filter(crimObj => crimObj.arrestingOfficer === officerName.name)
-
-    renderToDom(filteredCriminalsByOfficer)
+    const filteredCriminalsByOfficer = criminals.filter(crimObj => {
+        if (crimObj.arrestingOfficer === officerName) {
+            return true
+        }
     }
+    )
+    renderToDom(filteredCriminalsByOfficer)
 })

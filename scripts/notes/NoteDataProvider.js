@@ -1,4 +1,4 @@
-const evntHub = document.querySelector(".container")
+const eventHub = document.querySelector(".container")
 let notes = []
 
 const dispatchStateChangeEvent = () => {
@@ -7,12 +7,16 @@ const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(noteStateChangedEvent)
 }
 
-const getNotes = () => {
+export const getNotes = () => {
     return fetch('http://localhost:8088/notes')
         .then(response => response.json())
         .then(parsedNotes => {
             notes = parsedNotes
         })
+}
+
+export const useNotes = () => {
+    return notes.slice()
 }
 
 export const saveNote = note => {
@@ -28,16 +32,17 @@ export const saveNote = note => {
 }
 
 eventHub.addEventListener("click", clickEvent => {
+    clickEvent.preventDefault()
     if (clickEvent.target.id === "saveNote") {
         const noteText = document.querySelector("#note-text")
         const noteDate = document.querySelector("#note-date")
         const noteSuspect = document.querySelector("#note-suspect")
         const newNote = {
-            "note-text": noteText.value,
-            "note-date": noteDate.value,
-            "note-suspect": noteSuspect.value
+            "text": noteText.value,
+            "date": noteDate.value,
+            "suspect": noteSuspect.value
         }
-// RETURN HERE AND FIX NEW NOTE OBJECT
+
         saveNote(newNote)
     }
 })

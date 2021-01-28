@@ -21,3 +21,8 @@
     width: 25%;
 }
 
+/* aside {
+    display: flex;
+    flex-flow: column flex;
+    justify-content: center;
+} */

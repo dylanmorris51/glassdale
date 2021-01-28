@@ -1,11 +1,34 @@
 {
-    "notes": [
-        {
-            "id": 1,
-            "note-text": "ipsum fun time",
-            "note-date": "don't make me think of numbers",
-            "note-suspect": "Bryan, it's always Bryan."
-        }
-        
-    ]
+  "notes": [
+    {
+      "id": 1,
+      "text": "ipsum fun time",
+      "date": "don't make me think of numbers",
+      "suspect": "Bryan, it's always Bryan."
+    },
+    {
+      "text": "test",
+      "date": "2021-01-28",
+      "suspect": "test",
+      "id": 2
+    },
+    {
+      "text": "another test",
+      "date": "2021-01-28",
+      "suspect": "another test",
+      "id": 3
+    },
+    {
+      "text": "test note after styling",
+      "date": "",
+      "suspect": "self",
+      "id": 4
+    },
+    {
+      "text": "Test does entering a note cause note list to display without clicking show notes button",
+      "date": "2021-01-28",
+      "suspect": "note entry",
+      "id": 5
+    }
+  ]
 }

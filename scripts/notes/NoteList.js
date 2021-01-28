@@ -7,19 +7,21 @@ const eventHub = document.querySelector(".container")
 
 eventHub.addEventListener("showNotesClicked", customEvent => {
     NoteList()
+
 })
 
 const render = (noteArray) => {
     const allNotesConvertedToStrings = noteArray.map(
-        NoteHTMLConverter(noteArray)
+        arrayObj => NoteHTMLConverter(arrayObj)
     ).join("")
-    contentTarget.innerHTML = allNotesConvertedToStrings
+    return contentTarget.innerHTML = allNotesConvertedToStrings
 }
 
 export const NoteList = () => {
     getNotes()
         .then(() => {
             const allNotes = useNotes()
+            console.log("Notes Flag:", allNotes)
             render(allNotes)
         })
 }

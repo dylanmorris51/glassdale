@@ -88,3 +88,20 @@ eventHub.addEventListener("officerSelected", event => {
     )
     renderToDom(filteredCriminalsByOfficer)
 })
+
+// Alibi listener
+
+eventHub.addEventListener("click", clickEvent => {
+    
+    let associate = clickEvent.target.id.split("--")[0]
+    let criminalID = clickEvent.target.id.split("--")[1]
+    
+    if (associate === "associates") {
+        const customEvent = new CustomEvent("alibiSelected", {
+            detail: {
+                criminalID: criminalID
+            }
+        })
+        eventHub.dispatchEvent(customEvent)
+    }
+})

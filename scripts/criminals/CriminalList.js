@@ -59,7 +59,7 @@ export const CriminalList = () => {
             <section class="criminalList">
                 ${criminalHTMLRepresentation}
             </section>`
-    }
+}
 
 
 eventHub.addEventListener("crimeChosen", event => {

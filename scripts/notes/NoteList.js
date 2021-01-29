@@ -5,6 +5,7 @@ import { useOfficers } from '../officers/OfficerProvider.js'
 const contentTarget = document.querySelector(".noteList")
 const eventHub = document.querySelector(".container")
 
+
 eventHub.addEventListener("showNotesClicked", customEvent => {
     NoteList()
 

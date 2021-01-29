@@ -36,7 +36,7 @@
     flex-direction: row;
 }
 
-.noteList {
+.noteList, .alibiList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -44,6 +44,13 @@
 
 .note {
     background-color: papayawhip;
+    border-radius: 5%;
+    margin: 5px;
+    width: 33%;
+}
+
+.alibi__card {
+    background-color: powderblue;
     border-radius: 5%;
     margin: 5px;
     width: 33%;

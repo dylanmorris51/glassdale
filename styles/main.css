@@ -2,9 +2,10 @@
     /* border: 1px solid black; */
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
 }
 
-.criminal__card {
+.criminal__card, .witness__card {
     border: 1px solid black;
     margin: 10px;
     width: 25%;

@@ -9,7 +9,7 @@ import { ShowNoteButton } from './notes/ShowNotesButton.js'
 import { NoteList } from './notes/NoteList.js'
 import  {} from './alibis/AlibiList.js'
 import { ShowWitnessButton } from './witnesses/ShowWitnessButton.js'
-
+import { getWitnesses, useWitnesses } from './witnesses/WitnessDataProvider.js'
 
 
 
@@ -40,3 +40,5 @@ OfficerSelect()
 const displayNoteButton = ShowNoteButton()
 
 ShowWitnessButton()
+getWitnesses()
+useWitnesses()

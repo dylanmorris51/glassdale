@@ -16,14 +16,14 @@ export const WitnessList = () => {
 
 const render = (statementsCollection) => {
     let witnessHTMLRepresentation = ""
-
+debugger
     for (const statement of statementsCollection) {
         witnessHTMLRepresentation += WitnessHTMLConverter(statement)
     }
 
     contentTarget.innerHTML += `
     <h3> Witness Statements </h3>
-    <section class="witnessList"
+    <section class="witnessList">
         ${witnessHTMLRepresentation}
     </section>
     `

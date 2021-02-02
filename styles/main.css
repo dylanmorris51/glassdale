@@ -1,35 +1,53 @@
-.criminalList {
-    /* border: 1px solid black; */
+.caseDataContainer {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
 }
 
-.criminal__card, .witness__card {
-    border: 1px solid black;
-    margin: 10px;
-    width: 25%;
-}
-.officerList {
+.criminalList, .officerList, .noteList, .alibiList {
     /* border: 1px solid black; */
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
 }
+
+.criminal__card, .officer__card, .witness__card, .note {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    flex-basis: 25%;
+}
+/* .officerList {
+    /* border: 1px solid black; */
+    /* display: flex;
+    flex-wrap: wrap;
+} */ 
 
 .officer__card {
-    border: 1px solid black;
-    margin: 10px;
-    width: 25%;
+    border: 1px dotted blue;
 }
 
-/* aside {
-    display: flex;
-    flex-flow: column flex;
-    justify-content: center;
-} */
+.criminal__card {
+    border: 1px dotted red;
+}
+
+.note {
+    border: 1px dotted orchid;
+}
+
+
+.alibi__card {
+    
+border: 1px dotted rgb(51, 255, 0);
+}
+
+.witness__card {
+    border: 1px dotted goldenrod;
+}
+
+
 
 .top {
     display: flex;
+    flex-direction: column;
 }
 
 .bothButtons {
@@ -37,22 +55,16 @@
     flex-direction: row;
 }
 
-.noteList, .alibiList {
+
+/* aside {
+    display: flex;
+    flex-flow: column flex;
+    justify-content: center;
+} */
+/* .noteList, .alibiList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
+} */
 
-.note {
-    background-color: papayawhip;
-    border-radius: 5%;
-    margin: 5px;
-    width: 33%;
-}
 
-.alibi__card {
-    background-color: powderblue;
-    border-radius: 5%;
-    margin: 5px;
-    width: 33%;
-}

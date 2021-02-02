@@ -55,6 +55,16 @@ border: 1px dotted rgb(51, 255, 0);
     flex-direction: row;
 }
 
+.notesAside {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
 
 /* aside {
     display: flex;

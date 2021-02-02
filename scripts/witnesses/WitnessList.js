@@ -16,7 +16,7 @@ export const WitnessList = () => {
 
 const render = (statementsCollection) => {
     let witnessHTMLRepresentation = ""
-debugger
+
     for (const statement of statementsCollection) {
         witnessHTMLRepresentation += WitnessHTMLConverter(statement)
     }

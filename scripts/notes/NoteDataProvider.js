@@ -32,17 +32,20 @@ export const saveNote = note => {
 }
 
 eventHub.addEventListener("click", clickEvent => {
+    
     clickEvent.preventDefault()
+    
     if (clickEvent.target.id === "saveNote") {
         const noteText = document.querySelector("#note-text")
         const noteDate = document.querySelector("#note-date")
-        const noteSuspect = document.querySelector("#note-suspect")
+        const noteSuspect = document.querySelector("#noteform--criminal")
         const newNote = {
             "text": noteText.value,
             "date": noteDate.value,
-            "suspect": noteSuspect.value
+            "criminalId": noteSuspect.value
+            
         }
-
+        
         saveNote(newNote)
     }
 })

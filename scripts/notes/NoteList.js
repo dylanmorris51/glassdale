@@ -1,7 +1,6 @@
 import { getNotes, useNotes } from './NoteDataProvider.js'
 import { NoteHTMLConverter } from './Note.js'
-import { useOfficers } from '../officers/OfficerProvider.js'
-
+import { useCriminals, getCriminals } from '../criminals/CriminalProvider.js'
 const contentTarget = document.querySelector(".noteList")
 const eventHub = document.querySelector(".container")
 
@@ -18,20 +17,40 @@ eventHub.addEventListener("noteStateChanged", customEvent => {
     }
 })
 
-const render = (noteArray) => {
-    const allNotesConvertedToStrings = noteArray.map(
-        arrayObj => NoteHTMLConverter(arrayObj)
-    ).join("")
-    return contentTarget.innerHTML = allNotesConvertedToStrings
+const render = (noteArray, criminalsArray) => {
+    contentTarget.innerHTML = noteArray.map(note => {
+        // ! New code:
+        // Find related criminal
+        const relatedCriminal = criminalsArray.find(criminal => criminal.id === note.criminalId)
+    })
+    
+    return `
+        <section class="note">
+            <h2>Note about ${relatedCriminal.name}</h2>
+            ${note.text}
+        </section>
+    
+    `
+
+
+
+    
+    
+    // ! old code:
+    // const allNotesConvertedToStrings = noteArray.map(
+    //     arrayObj => NoteHTMLConverter(arrayObj)
+    // ).join("")
+    // return contentTarget.innerHTML = allNotesConvertedToStrings
 }
 
 export const NoteList = () => {
     getNotes()
+        .then(getCriminals)
         .then(() => {
-            const allNotes = useNotes()
-            console.log("Notes Flag:", allNotes)
-            render(allNotes)
+            const notes = useNotes()
+            const criminals = useCriminals()
+            
+            render(notes, criminals)
         })
 }
 
-// FOLLOW REST OF CHAPTER FIGURE OUT WHERE TO IMPORT NOTE LIST (NOT MAIN JS) AND FOLLOW ERRORS TO FIX THEM

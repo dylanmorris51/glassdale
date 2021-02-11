@@ -17,7 +17,7 @@ eventHub.addEventListener("noteStateChanged", customEvent => {
     }
 })
 
-const render = (noteArray, criminalsArray) => {
+export const render = (noteArray, criminalsArray) => {
     contentTarget.innerHTML = noteArray.map(note => {
         // ! New code:
         // Find related criminal
@@ -28,6 +28,7 @@ const render = (noteArray, criminalsArray) => {
                 <h2>Note about ${relatedCriminal.name}</h2>
                 ${note.text}
                 <div class="note__timestamp">Timestamp: ${ new Date(note.date).toLocaleDateString('en-US')  }</div>
+                <button id="deleteNote--${note.id}">Delete</button>
             </section>
         
         `

@@ -21,16 +21,18 @@ const render = (noteArray, criminalsArray) => {
     contentTarget.innerHTML = noteArray.map(note => {
         // ! New code:
         // Find related criminal
-        const relatedCriminal = criminalsArray.find(criminal => criminal.id === note.criminalId)
-    })
+        
+        const relatedCriminal = criminalsArray.find(criminal => criminal.id === parseInt(note.criminalId))
+        return `
+            <section class="note">
+                <h2>Note about ${relatedCriminal.name}</h2>
+                ${note.text}
+                <div class="note__timestamp">Timestamp: ${ new Date(note.date).toLocaleDateString('en-US')  }</div>
+            </section>
+        
+        `
+    }).join("")
     
-    return `
-        <section class="note">
-            <h2>Note about ${relatedCriminal.name}</h2>
-            ${note.text}
-        </section>
-    
-    `
 
 
 

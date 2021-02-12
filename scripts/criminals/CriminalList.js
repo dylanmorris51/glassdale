@@ -61,7 +61,7 @@ export const CriminalList = () => {
         // Step 2 - Filter all relationships to get onle ones for this criminal
                 const facilityRelationshipsForThisCriminal = allRelationships.filter(cf => cf.criminalId === criminalObject.id)
             
-        //  Step 3 - Convert the relationships to dacilities with map()
+        //  Step 3 - Convert the relationships to facilities with map()
                 const facilities = facilityRelationshipsForThisCriminal.map(cf => {
                     const matchingFacilityObject = allFacilities.find(facility => facility.id === cf.facilityId)
                     return matchingFacilityObject

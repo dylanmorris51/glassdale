@@ -2,7 +2,8 @@ import { getCriminals, useCriminals } from './CriminalProvider.js'
 import { Criminal } from './Criminal.js'
 import { useConvictions } from '../convictions/ConvicationProvider.js'
 import { useOfficers } from '../officers/OfficerProvider.js'
-
+import { getFacilities, useFacilities } from '../facility/FacilityProvider.js'
+import { getCriminalFacilities, useCriminalFacilities } from '../facility/CriminalFacilityProvider.js'
 
 
 // export const criminalList = () => {
@@ -28,37 +29,47 @@ import { useOfficers } from '../officers/OfficerProvider.js'
 // New code for event hub
 
 const eventHub = document.querySelector(".container")
-const criminalsContainer = document.querySelector(".criminalsContainer")
+const contentTarget = document.querySelector(".criminalList")
 
 
 
 export const CriminalList = () => {
     getCriminals()
-        .then(() => {
-            const criminalsArray = useCriminals()
-            renderToDom(criminalsArray)
+    .then(getFacilities)
+        .then(getCriminalFacilities)
+        .then(
+            () => {
+                // Pull in the data now that it has been fetched
+                const facilities = useFacilities()
+                const crimFac = useCriminalFacilities()
+                const criminals = useCriminals()
+
+                // Pass all three collections of data to render()
+                render(criminals, facilities, crimFac)
+        
+        // ! old code:
+        // .then(() => {
+        //     const criminalsArray = useCriminals()
+        //     renderToDom(criminalsArray)
         })
     }
     
-    const renderToDom = criminalCollection => {
-        // My code before Jissie's walkthrough:
-        
-        // criminalContainer.innerHTML = `
-        //     <h3> ${criminalCollection.conviction} Criminals </h3>
-        //         <article class="criminalList">
-        //             ${criminalCollection.name}
-        //         </article>
-        //         `
-        // Jisie's walkthrough:
-        let criminalHTMLRepresentation = ""
-        for (const criminal of criminalCollection)
-        criminalHTMLRepresentation += Criminal(criminal)
-    
-        criminalsContainer.innerHTML = `
-        <h3> Criminals </h3>
-            <section class="criminalList">
-                ${criminalHTMLRepresentation}
-            </section>`
+    const render = (criminalsToRender, allFacilities, allRelationships) => {
+        // Step 1 - Iterate all criminals
+        contentTarget.innerHTML = criminalsToRender.map(
+            (criminalObject) => {
+        // Step 2 - Filter all relationships to get onle ones for this criminal
+                const facilityRelationshipsForThisCriminal = allRelationships.filter(cf => cf.criminalId === criminalObject.id)
+            
+        //  Step 3 - Convert the relationships to dacilities with map()
+                const facilities = facilityRelationshipsForThisCriminal.map(cf => {
+                    const matchingFacilityObject = allFacilities.find(facility => facility.id === cf.facilityId)
+                    return matchingFacilityObject
+                })
+        // Must pass the matching facilities to the Criminal component
+        return Criminal(criminalObject, facilities)
+            }
+        ).join("")        
 }
 
 

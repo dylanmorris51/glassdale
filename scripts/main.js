@@ -14,7 +14,6 @@ import  './witnesses/WitnessList.js'
 import { getCriminals } from './criminals/CriminalProvider.js'
 
 
-
 getCriminals().then(NoteForm)
 
 

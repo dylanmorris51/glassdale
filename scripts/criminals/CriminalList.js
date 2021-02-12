@@ -80,12 +80,16 @@ eventHub.addEventListener("crimeChosen", event => {
             const chosenConvictionObject = convictionsArray.find(convictionObj => {return convictionObj.id === parseInt(event.detail.crimeThatWasChosen)})
     const criminalsArray = useCriminals()
             const filteredCriminalsArray = criminalsArray.filter(criminalObj => {return criminalObj.conviction === chosenConvictionObject.name})
+    
+    const facilities = useFacilities()
+    const crimFac = useCriminalFacilities()    
 
-            renderToDom(filteredCriminalsArray)
+            render(filteredCriminalsArray, facilities, crimFac)
         }
     }
 ) 
 
+// TODO: fix this
 eventHub.addEventListener("officerSelected", event => {
     const officerName = event.detail.officer
     
@@ -97,7 +101,9 @@ eventHub.addEventListener("officerSelected", event => {
         }
     }
     )
-    renderToDom(filteredCriminalsByOfficer)
+    const facilities = useFacilities()
+    const crimFac = useCriminalFacilities()
+    render(filteredCriminalsByOfficer, facilities, crimFac)
 })
 
 // Alibi listener

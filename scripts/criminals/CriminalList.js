@@ -89,18 +89,14 @@ eventHub.addEventListener("crimeChosen", event => {
     }
 ) 
 
-// TODO: fix this
+
 eventHub.addEventListener("officerSelected", event => {
     const officerName = event.detail.officer
     
     const criminals = useCriminals()
 
-    const filteredCriminalsByOfficer = criminals.filter(crimObj => {
-        if (crimObj.arrestingOfficer === officerName) {
-            return true
-        }
-    }
-    )
+    const filteredCriminalsByOfficer = criminals.filter(crimObj => crimObj.arrestingOfficer === officerName)
+        
     const facilities = useFacilities()
     const crimFac = useCriminalFacilities()
     render(filteredCriminalsByOfficer, facilities, crimFac)

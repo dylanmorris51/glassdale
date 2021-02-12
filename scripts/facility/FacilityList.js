@@ -28,7 +28,9 @@ const render = (facilitiesToRender, allCriminals, allRelationships) => {
                 const matchingCriminalObject = allCriminals.find(criminal => criminal.id === relObj.criminalId)
                 return matchingCriminalObject
             })
-            return Facility(facility, criminals)
+            return FacilityHTMLConverter(facility, criminals)
         }
     ).join("")
 }
+
+//! Stopped here on Friday after class. Never checked to see if any of this works yet. Copy/Pastaing logic from the CriminalList to get it working the same way

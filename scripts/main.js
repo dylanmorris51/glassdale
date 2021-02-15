@@ -13,7 +13,7 @@ import { getWitnesses, useWitnesses } from './witnesses/WitnessDataProvider.js'
 import  './witnesses/WitnessList.js'
 import { getCriminals } from './criminals/CriminalProvider.js'
 import { DisplayFacilitiesButton } from './facility/DisplayFacilitiesButton.js'
-
+import './facility/FacilityList.js'
 
 getCriminals().then(NoteForm)
 

@@ -1,7 +1,7 @@
 const contentTarget = document.querySelector(".facility__button")
 const eventHub = document.querySelector(".container")
 
-
+// Button
 export const DisplayFacilitiesButton = () => {
 
     contentTarget.innerHTML = `
@@ -9,6 +9,7 @@ export const DisplayFacilitiesButton = () => {
     `
 }
 
+// Click event
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "displayFacilities") {
         const customEvent = new CustomEvent("facilitiesButtonClicked")

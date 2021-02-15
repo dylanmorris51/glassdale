@@ -29,7 +29,7 @@ import { getCriminalFacilities, useCriminalFacilities } from '../facility/Crimin
 // New code for event hub
 
 const eventHub = document.querySelector(".container")
-const contentTarget = document.querySelector(".criminalList")
+const contentTarget = document.querySelector(".criminalsContainer")
 
 
 
@@ -56,9 +56,12 @@ export const CriminalList = () => {
     
     const render = (criminalsToRender, allFacilities, allRelationships) => {
         // Step 1 - Iterate all criminals
-        contentTarget.innerHTML = criminalsToRender.map(
+        contentTarget.innerHTML = `
+        <h3>Criminals</h3>
+        
+        <article class="criminalList"> ${criminalsToRender.map(
             (criminalObject) => {
-        // Step 2 - Filter all relationships to get onle ones for this criminal
+        // Step 2 - Filter all relationships to get only ones for this criminal
                 const facilityRelationshipsForThisCriminal = allRelationships.filter(cf => cf.criminalId === criminalObject.id)
             
         //  Step 3 - Convert the relationships to facilities with map()
@@ -69,7 +72,7 @@ export const CriminalList = () => {
         // Must pass the matching facilities to the Criminal component
         return Criminal(criminalObject, facilities)
             }
-        ).join("")        
+        ).join("")} </article>`        
 }
 
 

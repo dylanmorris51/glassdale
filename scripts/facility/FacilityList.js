@@ -45,9 +45,10 @@ const render = (facilitiesToRender, allCriminals, allRelationships) => {
 //! Stopped here on Friday after class. Never checked to see if any of this works yet. Copy/Pastaing logic from the CriminalList to get it working the same way
 
 
-// Event listner for display facilities button
+// Event listener for display facilities button
 eventHub.addEventListener("facilitiesButtonClicked", event => {
     criminalsTarget.innerHTML = ""
     FacilityList()
 }
 )
+

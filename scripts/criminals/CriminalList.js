@@ -6,31 +6,11 @@ import { getFacilities, useFacilities } from '../facility/FacilityProvider.js'
 import { getCriminalFacilities, useCriminalFacilities } from '../facility/CriminalFacilityProvider.js'
 
 
-// export const criminalList = () => {
-    
-//     getCriminals()
-//         .then(() => {
-//             const criminalArray = useCriminals()
-//             const criminalContainer = document.querySelector(".criminalsContainer")
-//             let criminalHTMLRepresentation = ""
-    
-//             for (const criminal of criminalArray) {
-//                 criminalHTMLRepresentation += Criminal(criminal)
-//             }
-    
-//             criminalContainer.innerHTML += `
-//             <h3> Criminals </h3>
-//             <article class="criminalList">
-//                 ${criminalHTMLRepresentation}
-//             </article>`
-//         })
-// }
 
-// New code for event hub
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".criminalsContainer")
-
+const facilityTarget = document.querySelector(".facilityContainer")
 
 
 export const CriminalList = () => {
@@ -75,7 +55,7 @@ export const CriminalList = () => {
         ).join("")} </article>`        
 }
 
-
+// Conviction select listener
 eventHub.addEventListener("crimeChosen", event => {
     if (event.detail.crimeThatWasChosen !== "0") {
         
@@ -92,7 +72,7 @@ eventHub.addEventListener("crimeChosen", event => {
     }
 ) 
 
-
+// Officer select listener
 eventHub.addEventListener("officerSelected", event => {
     const officerName = event.detail.officer
     
@@ -120,4 +100,32 @@ eventHub.addEventListener("click", clickEvent => {
         })
         eventHub.dispatchEvent(customEvent)
     }
+})
+
+//Event listener for show criminals button on the facility cards
+eventHub.addEventListener("ShowFacilityCriminals", event => {
+    //Using facility ID, filter for relevant criminals, put that array of criminals into render function
+
+    const facilityId = parseInt(event.detail.facilityId)
+
+    const allCriminals = useCriminals()
+    const allFacilities = useFacilities()
+    const allCrimFac = useCriminalFacilities()
+
+
+    // Filter all facilities for matching facility id by connecting foreign key with private key
+    
+const matchingFacilities = allCrimFac.filter(crimFac => crimFac.facilityId === facilityId)
+
+    
+    // Take all matching facilities and find    
+    const matchingCriminalRelationshipsArray = matchingFacilities.map(crimFac => {
+        // For each relationship object return a criminal name that matches the criminal id
+        const matchingCriminalsArray = allCriminals.find(crim => crim.id === crimFac.criminalId)
+        return matchingCriminalsArray
+    })
+    
+    facilityTarget.innerHTML = ""
+    render(matchingCriminalRelationshipsArray, allFacilities, allCrimFac)
+
 })

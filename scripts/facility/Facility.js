@@ -17,3 +17,19 @@ export const FacilityHTMLConverter = (facilityObject, criminals) => {
         </div>
         `
 }
+
+const eventHub = document.querySelector(".container")
+
+//Event listener for show criminals button on the facility cards
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("criminals--")) {
+        const [prefix, id] = clickEvent.target.id.split("--")
+        
+        const customEvent = new CustomEvent("ShowFacilityCriminals", {
+            detail: {
+                facilityId: id
+            }
+        })
+        eventHub.dispatchEvent(customEvent)
+    }
+})

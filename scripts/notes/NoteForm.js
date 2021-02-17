@@ -1,7 +1,11 @@
+import { useCriminals } from '../criminals/CriminalProvider.js'
+
 const contentTarget = document.querySelector(".noteFormContainer")
 const saveButtonTarget = document.querySelector(".noteSaveButton")
 
 const render = () => {
+    const criminalArray = useCriminals()
+    
     contentTarget.innerHTML =  `
         <form id="noteForm">
             <fieldset id="noteFormField">
@@ -14,8 +18,10 @@ const render = () => {
                 <textarea name="note-text" id="note-text" rows="4" cols="50"></textarea>
             </fieldset>
             <fieldset id="suspectField">
-                <label for="note-suspect">Suspect</label>
-                <input type="text" name="note-suspect" id="note-suspect">
+                <label for="noteform--criminal">Suspect:</label>
+                <select id="noteform--criminal" class="criminalSelect">
+                    ${criminalArray.map(criminal =>  `<option value="${criminal.id}">${criminal.name}</option>`).join("")}
+                </select>
             </fieldset>
             </fieldset>
             

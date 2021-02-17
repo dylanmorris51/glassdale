@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.criminalList, .officerList, .noteList, .alibiList {
+.criminalList, .officerList, .noteList, .alibiList, .facilityList {
     /* border: 1px solid black; */
     display: flex;
     flex-wrap: wrap;
@@ -10,7 +10,7 @@
     align-content: space-between;
 }
 
-.criminal__card, .officer__card, .witness__card, .note {
+.criminal__card, .officer__card, .witness__card, .note, .facility__card {
     margin: 0.5rem;
     padding: 0.5rem;
     flex-basis: 25%;
@@ -41,6 +41,10 @@ border: 1px dotted rgb(51, 255, 0);
 
 .witness__card {
     border: 1px dotted goldenrod;
+}
+
+.facility__card {
+    border: 1px dotted orange;
 }
 
 
